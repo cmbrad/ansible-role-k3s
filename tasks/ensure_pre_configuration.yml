@@ -65,6 +65,7 @@
     - inventory_hostname == k3s_controller_list[0]
     - k3s_build_cluster is defined
     - k3s_build_cluster
+    - not (ansible_play_hosts|map('extract', hostvars, 'k3s_primary_control_node')|list is any)
 
 - name: Ensure ansible_host is mapped to inventory_hostname
   ansible.builtin.blockinfile:
