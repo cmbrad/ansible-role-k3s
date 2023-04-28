@@ -20,6 +20,7 @@
   retries: 3
   delay: 3
   register: k3s_systemd_restart_k3s
+  until: k3s_systemd_restart_k3s is succeeded
   failed_when:
     - k3s_systemd_restart_k3s is not success
     - not ansible_check_mode
@@ -33,6 +34,7 @@
   retries: 3
   delay: 3
   register: k3s_service_restart_k3s
+  until: k3s_service_restart_k3s is succeeded
   failed_when:
     - k3s_service_restart_k3s is not success
     - not ansible_check_mode
