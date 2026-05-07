@@ -57,7 +57,7 @@
       {% for host in ansible_play_hosts %}
       ## {{ host }}
       {% for config_key in hostvars[host] %}
-      {% if config_key | regex_search('^k3s_') %}
+      {% if config_key is search('^k3s_') %}
       {{ config_key }}: {{ hostvars[host][config_key] | to_json }}
       {% endif %}
       {% endfor %}
